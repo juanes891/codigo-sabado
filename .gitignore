@@ -1,0 +1,89 @@
+import React, { useState } from 'react';
+import { View, TextInput, TouchableOpacity, Text, StyleSheet } from 'react-native';
+
+const App = () => {
+  const [noteName, setNoteName] = useState('');
+  const [noteDescription, setNoteDescription] = useState('');
+
+  const handleSave = () => {
+    console.log({ noteName, noteDescription });
+  };
+
+  return (
+    <View style={styles.mainContainer}>
+      <View style={styles.header}>
+        <Text style={styles.headerText}>Nota</Text>
+      </View>
+      <View style={styles.container}>
+        <TextInput
+          style={[styles.input, { marginTop: 20 }]}
+          placeholder="Nombre de la nota"
+          value={noteName}
+          onChangeText={(text) => setNoteName(text)}
+        />
+        <TextInput
+          style={[styles.input, { marginTop: 10 }]}
+          placeholder="Descripción"
+          value={noteDescription}
+          onChangeText={(text) => setNoteDescription(text)}
+        />
+        <TouchableOpacity onPress={handleSave} style={styles.button}>
+          <Text style={styles.buttonText}>Guardar</Text>
+        </TouchableOpacity>
+      </View>
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  mainContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#F5F5F5',
+  },
+  header: {
+    width: '90%',
+    paddingVertical: 10,
+    backgroundColor: '#A9A9A9',
+    alignItems: 'center',
+    borderRadius: 5,
+  },
+  headerText: {
+    color: '#333',
+    fontSize: 18,
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+  container: {
+    width: '90%',
+    marginTop: 20,
+    alignItems: 'center',
+  },
+  input: {
+    width: '100%',
+    height: 40,
+    borderWidth: 1,
+    borderColor: '#A9A9A9',
+    borderRadius: 8,
+    padding: 10,
+    backgroundColor: '#FFF',
+    color: '#333',
+  },
+  button: {
+    width: '100%',
+    height: 40,
+    backgroundColor: '#A9A9A9',
+    borderRadius: 8,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 20,
+  },
+  buttonText: {
+    color: '#FFF',
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+});
+
+export default App;
